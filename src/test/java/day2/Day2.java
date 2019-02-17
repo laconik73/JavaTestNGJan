@@ -4,9 +4,11 @@ import bsh.This;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -85,55 +87,12 @@ public class Day2 {
         driver.get(url);
 
     }
-
-    @Test
-    public void testYahooSearch() {
-
-    }
-
-    String textString = "portnov computer school";
-
-
-    //openYahoo();
-    //typeText(String);
-    //clickSearch();
-    // waitForWrapPage();
-    //assertWrapPage();
-
-    private void openYahoo() {
-        String url = "https://www.yahoo.com/";
-        driver.get(url);
-
-    }
-
-    private void typeText(String textToType) {
-
-        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
-        inputTextField.sendKeys(textToType);
-
-    }
-
-
-    private void clickSearch() {
-        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
-        inputTextField.click();
-    }
-
-    private void assertWrapPage() {
-        WebElement resultStats = driver.findElement(By.id("#sbq-wrap"));
-        boolean isResultsDisplayed = resultStats.isDisplayed();
-        assertTrue(isResultsDisplayed);
-
-
-    }
-
-    private void waitForWrapPage() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("#sbq-wrap")));
-
-
-    }
 }
+
+
+
+
+
 
 
 
