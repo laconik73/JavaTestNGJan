@@ -1,5 +1,6 @@
 package day2;
 
+import bsh.This;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +13,10 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
 
 public class Day2 {
-    WebDriver driver;
 
+
+    private FirefoxDriver driver;
+    private This textToType;
 
     @BeforeSuite
     public void setup() {
@@ -39,11 +42,11 @@ public class Day2 {
     public void testGoogleSearch() {
         String queryString = "portnov computer school";
 
-         openMainPage();
-         typeQuery(queryString);
-         submitSearch();
-         waitForResultPage ();
-         assertResultPage();
+        openMainPage();
+        typeQuery(queryString);
+        submitSearch();
+        waitForResultPage();
+        assertResultPage();
 
     }
 
@@ -54,9 +57,9 @@ public class Day2 {
     }
 
     private void assertResultPage() {
-     WebElement resultStats =  driver.findElement(By.id("resultStats"));
-     boolean isResultsDisplayed = resultStats.isDisplayed();
-     assertTrue(isResultsDisplayed);
+        WebElement resultStats = driver.findElement(By.id("resultStats"));
+        boolean isResultsDisplayed = resultStats.isDisplayed();
+        assertTrue(isResultsDisplayed);
 
 
     }
@@ -68,8 +71,8 @@ public class Day2 {
 
     private void typeQuery(String textToType) {
 
-     WebElement inputTextField  =  driver.findElement(By.cssSelector(".gLFyf"));
-     inputTextField.sendKeys(textToType);
+        WebElement inputTextField = driver.findElement(By.cssSelector(".gLFyf"));
+        inputTextField.sendKeys(textToType);
     }
 
     private void setupBrowser() {
@@ -82,4 +85,58 @@ public class Day2 {
         driver.get(url);
 
     }
+
+    @Test
+    public void testYahooSearch() {
+
+    }
+
+    String textString = "portnov computer school";
+
+
+    //openYahoo();
+    //typeText(String);
+    //clickSearch();
+    // waitForWrapPage();
+    //assertWrapPage();
+
+    private void openYahoo() {
+        String url = "https://www.yahoo.com/";
+        driver.get(url);
+
+    }
+
+    private void typeText(String textToType) {
+
+        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
+        inputTextField.sendKeys(textToType);
+
+    }
+
+
+    private void clickSearch() {
+        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
+        inputTextField.click();
+    }
+
+    private void assertWrapPage() {
+        WebElement resultStats = driver.findElement(By.id("#sbq-wrap"));
+        boolean isResultsDisplayed = resultStats.isDisplayed();
+        assertTrue(isResultsDisplayed);
+
+
+    }
+
+    private void waitForWrapPage() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("#sbq-wrap")));
+
+
+    }
 }
+
+
+
+
+
+
