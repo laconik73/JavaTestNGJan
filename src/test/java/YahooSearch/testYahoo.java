@@ -1,4 +1,4 @@
-package day2;
+package YahooSearch;
 
 import bsh.This;
 import org.openqa.selenium.By;
@@ -9,9 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertTrue;
 
-public class Day2 {
+
+
+public class testYahoo {
 
 
     private FirefoxDriver driver;
@@ -38,8 +41,8 @@ public class Day2 {
     }
 
     @Test
-    public void testGoogleSearch() {
-        String queryString = "portnov computer school";
+    public void testYahooSearch() {
+        String queryString = "wikipedia";
 
         openMainPage();
         typeQuery(queryString);
@@ -51,12 +54,12 @@ public class Day2 {
 
     private void waitForResultPage() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultStats")));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("#sbq-wrap")));
 
     }
 
     private void assertResultPage() {
-        WebElement resultStats = driver.findElement(By.id("resultStats"));
+        WebElement resultStats = driver.findElement(By.id("#sbq-wrap"));
         boolean isResultsDisplayed = resultStats.isDisplayed();
         assertTrue(isResultsDisplayed);
 
@@ -64,13 +67,13 @@ public class Day2 {
     }
 
     private void submitSearch() {
-        WebElement inputTextField = driver.findElement(By.cssSelector(".gLFyf"));
+        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
         inputTextField.submit();
     }
 
     private void typeQuery(String textToType) {
 
-        WebElement inputTextField = driver.findElement(By.cssSelector(".gLFyf"));
+        WebElement inputTextField = driver.findElement(By.cssSelector("#uh-search-box"));
         inputTextField.sendKeys(textToType);
     }
 
@@ -80,19 +83,10 @@ public class Day2 {
 
 
     private void openMainPage() {
-        String url = "https://www.google.com";
+        String url = "https://www.yahoo.com";
         driver.get(url);
 
     }
 }
-
-
-
-
-
-
-
-
-
 
 
